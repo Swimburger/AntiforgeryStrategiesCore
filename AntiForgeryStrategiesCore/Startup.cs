@@ -27,7 +27,7 @@ namespace AntiForgeryStrategiesCore
         {
             // Add framework services.
 
-            services.AddSingleton<IAntiforgeryAdditionalDataProvider, SingleTokenAntiforgeryAdditionalDataProvider>();
+            services.AddSingleton<IAntiforgeryAdditionalDataProvider, TimeTokenAntiforgeryAdditionalDataProvider>();
             services.AddMvc();        
             
             // Adds a default in-memory implementation of IDistributedCache.
