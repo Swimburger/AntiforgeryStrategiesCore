@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Http;
-using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
 

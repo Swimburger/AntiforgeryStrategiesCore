@@ -4,17 +4,16 @@ using Microsoft.AspNetCore.Http;
 
 namespace AntiForgeryStrategiesCore
 {
-    public class TimeTokenAntiforgeryAdditionalDataProvider : IAntiforgeryAdditionalDataProvider
+    public class DummyAntiforgeryAdditionalDataProvider : IAntiforgeryAdditionalDataProvider
     {
         public string GetAdditionalData(HttpContext context)
         {
-            return DateTime.Now.AddSeconds(10).ToString();
+            return "Some dummy additional data";
         }
 
         public bool ValidateAdditionalData(HttpContext context, string additionalData)
         {
-            var expirationDateTime = DateTime.Parse(additionalData);
-            return DateTime.Now < expirationDateTime;
+            return additionalData == "Some dummy additional data";
         }
     }
 }
