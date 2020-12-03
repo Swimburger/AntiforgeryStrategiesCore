@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -8,4 +9,28 @@
         <input class="form-control" />
     </div>
     <input type="submit" />
+    @if(!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <div class="alert alert-success" role="alert">
+            @ViewBag.Message
+        </div>
+    }
 </form>
+
+<h2>Session</h2>
+<ul>
+    @foreach(var sessionKey in Context.Session.Keys)
+    {
+    <li>
+        @sessionKey: @Context.Session.GetString(sessionKey)
+    </li>
+    }
+</ul>
+
+@section Scripts{
+    <script>
+        setTimeout(function(){
+            $('.alert').hide(600);
+        },500);
+    </script>
+}

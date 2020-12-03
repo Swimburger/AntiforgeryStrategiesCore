@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:52229/",
-      "sslPort": 0
+      "applicationUrl": "http://localhost:54212",
+      "sslPort": 44367
     }
   },
   "profiles": {
@@ -17,11 +17,12 @@
     },
     "AntiForgeryStrategiesCore": {
       "commandName": "Project",
+      "dotnetRunMessages": "true",
       "launchBrowser": true,
+      "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "http://localhost:52230"
+      }
     }
   }
 }

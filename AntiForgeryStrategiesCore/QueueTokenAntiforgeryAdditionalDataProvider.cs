@@ -16,9 +16,9 @@ namespace AntiForgeryStrategiesCore
         public string GetAdditionalData(HttpContext context)
         {
             var newToken = TokenGenerator.GetRandomToken();
-            if (newToken.Contains(';'))
+            if (newToken.Contains(Separator))
             {
-                newToken = newToken.Remove(';'); //to prevent collision
+                newToken = newToken.Replace(Separator.ToString(), string.Empty); //to prevent collision
             }
 
             List<string> existingTokens = GetTokens(context);

@@ -1,4 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using AntiForgeryStrategiesCore.Models;
 using Microsoft.AspNetCore.Http;
 
 namespace AntiForgeryStrategiesCore.Controllers
@@ -14,12 +20,15 @@ namespace AntiForgeryStrategiesCore.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Index(IFormCollection form)
         {
+            ViewBag.Message = "Form submitted successfully!";
             return View();
         }
 
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View();
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
