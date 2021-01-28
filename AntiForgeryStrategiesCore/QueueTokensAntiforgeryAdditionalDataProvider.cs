@@ -45,9 +45,16 @@ namespace AntiForgeryStrategiesCore
             return false;
         }
 
-        private static void SetTokens(HttpContext context, List<string> existingTokens)
+        private static void SetTokens(HttpContext context, List<string> tokens)
         {
-            context.Session.SetString(TokenKey, string.Join(";", existingTokens));
+            if(tokens == null || tokens.Count == 0)
+            {
+                context.Session.Remove(TokenKey);
+            }
+            else
+            {
+                context.Session.SetString(TokenKey, string.Join(";", tokens));
+            }
         }
 
         private static List<string> GetTokens(HttpContext context)

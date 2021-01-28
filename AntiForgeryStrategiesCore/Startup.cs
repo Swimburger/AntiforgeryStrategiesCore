@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -33,7 +32,7 @@ namespace AntiForgeryStrategiesCore
                 options.Cookie.IsEssential = true;
             });
 
-            services.AddSingleton<IAntiforgeryAdditionalDataProvider>(serviceProvider =>
+            services.AddSingleton(serviceProvider =>
             {
                 var antiforgeryAdditionalDataProviderTypeStrongName = Configuration.GetValue<string>("AntiforgeryAdditionalDataProvider");
                 var antiforgeryAdditionalDataProviderType = Type.GetType(antiforgeryAdditionalDataProviderTypeStrongName);
